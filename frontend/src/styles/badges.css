@@ -1,0 +1,151 @@
+/* Badge Styles */
+
+.badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--spacing-xs) var(--spacing-sm);
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-medium);
+	border-radius: var(--radius-full);
+	white-space: nowrap;
+}
+
+.badge-primary {
+	background-color: var(--color-info-light);
+	color: var(--color-info);
+}
+
+.badge-success {
+	background-color: var(--color-success-light);
+	color: var(--color-success);
+}
+
+.badge-warning {
+	background-color: var(--color-warning-light);
+	color: var(--color-warning);
+}
+
+.badge-error {
+	background-color: var(--color-error-light);
+	color: var(--color-error);
+}
+
+.badge-gray {
+	background-color: var(--color-gray-100);
+	color: var(--color-gray-700);
+}
+
+.badge-sm {
+	padding: 2px var(--spacing-xs);
+	font-size: 0.625rem;
+}
+
+.badge-lg {
+	padding: var(--spacing-sm) var(--spacing-md);
+	font-size: var(--font-size-sm);
+}
+
+.badge-dot::before {
+	content: "";
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	margin-right: var(--spacing-xs);
+	background-color: currentColor;
+}
+
+/* Square avatar badges — deterministic color per record, see utils/avatarColor.js.
+   Global (not scoped) so any component can render one with a matching color. */
+.avatar-badge {
+	background: var(--avatar-bg);
+	color: var(--avatar-text);
+	border: 1px solid var(--avatar-text);
+}
+
+/* Solid variant — filled background with white text, for page-header avatars
+   where a bolder look reads better than the list's subtle badge. Uses its own
+   --avatar-solid (fixed, NOT overridden under .dark below) rather than
+   --avatar-text, which turns into a pastel tone under .dark for foreground-
+   text-on-dark-background use -- reusing it here would wash out the fill and
+   leave white text with poor contrast. */
+.avatar-solid {
+	background: var(--avatar-solid);
+	color: #fff;
+	border: none;
+}
+
+.avatar-color-0 {
+	--avatar-bg: rgb(30 64 175 / 12%);
+	--avatar-text: #1e40af;
+	--avatar-solid: #1e40af;
+}
+.avatar-color-1 {
+	--avatar-bg: rgb(4 120 87 / 12%);
+	--avatar-text: #047857;
+	--avatar-solid: #047857;
+}
+.avatar-color-2 {
+	--avatar-bg: rgb(185 28 28 / 12%);
+	--avatar-text: #b91c1c;
+	--avatar-solid: #b91c1c;
+}
+.avatar-color-3 {
+	--avatar-bg: rgb(109 40 217 / 12%);
+	--avatar-text: #6d28d9;
+	--avatar-solid: #6d28d9;
+}
+.avatar-color-4 {
+	--avatar-bg: rgb(194 65 12 / 12%);
+	--avatar-text: #c2410c;
+	--avatar-solid: #c2410c;
+}
+.avatar-color-5 {
+	--avatar-bg: rgb(14 116 144 / 12%);
+	--avatar-text: #0e7490;
+	--avatar-solid: #0e7490;
+}
+.avatar-color-6 {
+	--avatar-bg: rgb(190 24 93 / 12%);
+	--avatar-text: #be185d;
+	--avatar-solid: #be185d;
+}
+.avatar-color-7 {
+	--avatar-bg: rgb(161 98 7 / 12%);
+	--avatar-text: #a16207;
+	--avatar-solid: #a16207;
+}
+
+.dark .avatar-color-0 {
+	--avatar-bg: rgb(96 165 250 / 16%);
+	--avatar-text: #93c5fd;
+}
+.dark .avatar-color-1 {
+	--avatar-bg: rgb(52 211 153 / 16%);
+	--avatar-text: #6ee7b7;
+}
+.dark .avatar-color-2 {
+	--avatar-bg: rgb(248 113 113 / 16%);
+	--avatar-text: #fca5a5;
+}
+.dark .avatar-color-3 {
+	--avatar-bg: rgb(167 139 250 / 16%);
+	--avatar-text: #c4b5fd;
+}
+.dark .avatar-color-4 {
+	--avatar-bg: rgb(251 146 60 / 16%);
+	--avatar-text: #fdba74;
+}
+.dark .avatar-color-5 {
+	--avatar-bg: rgb(34 211 238 / 16%);
+	--avatar-text: #67e8f9;
+}
+.dark .avatar-color-6 {
+	--avatar-bg: rgb(244 114 182 / 16%);
+	--avatar-text: #f9a8d4;
+}
+.dark .avatar-color-7 {
+	--avatar-bg: rgb(250 204 21 / 16%);
+	--avatar-text: #fde047;
+}

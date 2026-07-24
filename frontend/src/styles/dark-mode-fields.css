@@ -1,0 +1,278 @@
+/* Global dark mode overrides for TMS field components */
+
+/* --- Base Input Overrides --- */
+.control-input input,
+.control-input textarea,
+.control-input select,
+.textarea-field-control textarea {
+	width: 100% !important;
+	background: transparent !important;
+	border: none !important;
+	outline: none !important;
+	color: #252437 !important; /* text-primary */
+	padding: 0 !important;
+	margin: 0 !important;
+	box-shadow: none !important;
+	font-weight: 600 !important;
+}
+
+.control-input input:focus,
+.control-input textarea:focus,
+.control-input select:focus,
+.textarea-field-control textarea:focus {
+	box-shadow: none !important;
+	border: none !important;
+	outline: none !important;
+	--tw-ring-shadow: none !important;
+}
+
+.control-input input::placeholder,
+.control-input textarea::placeholder,
+.textarea-field-control textarea::placeholder {
+	color: #858493 !important; /* text-3 */
+	font-size: var(--field-placeholder-size, 11px) !important; /* scales with field size */
+	font-weight: 400 !important;
+}
+
+.control-input input:disabled,
+.control-input textarea:disabled,
+.control-input select:disabled,
+.textarea-field-control textarea:disabled {
+	cursor: not-allowed !important;
+}
+
+/* Dark Mode Input Colors */
+.dark .control-input input,
+.dark .control-input textarea,
+.dark .control-input select,
+.dark .textarea-field-control textarea {
+	color: #e8e6f5 !important; /* text-slate-100 */
+}
+
+.dark .control-input input::placeholder,
+.dark .control-input textarea::placeholder,
+.dark .textarea-field-control textarea::placeholder {
+	color: #5a596a !important; /* text-slate-500 */
+	font-weight: 400 !important;
+}
+
+/* Base Field Controls specific for Textarea, Selects */
+.dark .textarea-field-control {
+	background-color: transparent !important;
+}
+.dark .base-field-control {
+	background-color: #0e0c1a !important; /* Use sidebar background */
+	border-color: #18162c !important;
+}
+
+/* ==========================================
+   GENERIC CATCH-ALL FOR ALL TMS FIELDS 
+   ========================================== */
+
+/* All dropdowns, popups, and panels */
+.dark [class*="-dropdown"],
+.dark [class*="-popup"],
+.dark [class*="-panel"],
+.dark .dropdown-footer,
+.dark .search-results,
+.dark .rich-text-toolbar {
+	background-color: #0e0c1a !important;
+	border-color: #18162c !important;
+	color: #e8e6f5 !important;
+}
+
+/* All selectable options, list items, and calendar cells */
+.dark [class*="-option"],
+.dark [class*="-cell"],
+.dark [class*="-item"]:not(.text-nav-item):not(.transfer-item),
+.dark .tree-node,
+.dark .transfer-item,
+.dark .week-row {
+	color: #e8e6f5 !important;
+}
+
+/* Hover states for all options and cells */
+.dark [class*="-option"]:hover:not(.disabled):not(.is-disabled):not(.is-readonly),
+.dark [class*="-cell"]:hover:not(.disabled):not(.is-disabled):not(.is-readonly):not(.other-month),
+.dark
+	[class*="-item"]:not(.text-nav-item):hover:not(.disabled):not(.is-disabled):not(.is-readonly),
+.dark .tree-node-content:hover,
+.dark .transfer-item:hover,
+.dark .week-row:hover {
+	background-color: #18162c !important;
+	color: #e8e6f5 !important;
+}
+
+/* Selected states for all options and cells */
+.dark [class*="-option"].is-selected,
+.dark [class*="-option"].selected,
+.dark [class*="-option"].is-highlighted,
+.dark [class*="-cell"].is-selected,
+.dark [class*="-cell"].selected,
+.dark [class*="-item"]:not(.text-nav-item).is-selected,
+.dark [class*="-item"]:not(.text-nav-item).is-active,
+.dark .tree-node.is-selected {
+	background-color: #6742cf !important;
+	color: #ffffff !important;
+}
+
+/* Disabled states */
+.dark [class*="-option"].is-disabled,
+.dark [class*="-option"].disabled,
+.dark [class*="-cell"].is-disabled,
+.dark [class*="-cell"].disabled {
+	color: #5a596a !important;
+	background-color: transparent !important;
+}
+
+/* ==========================================
+   SPECIFIC FIELD FIXES
+   ========================================== */
+
+/* Tag Input Field */
+.dark .tag {
+	background-color: #18162c !important;
+	border-color: #2d2a42 !important;
+	color: #e8e6f5 !important;
+}
+.dark .tag-remove:hover {
+	background-color: #2d2a42 !important;
+	color: #f87171 !important;
+}
+
+/* Priority Field */
+.dark .priority-btn {
+	background-color: #0e0c1a !important;
+	border-color: #18162c !important;
+	color: #e8e6f5 !important;
+}
+.dark .priority-btn:hover {
+	background-color: #18162c !important;
+}
+.dark .priority-btn.is-selected {
+	border-color: #6742cf !important;
+	background-color: #18162c !important;
+}
+
+/* Date/Time Selects (Month/Year) */
+.dark .calendar-header select,
+.dark .month-select,
+.dark .year-select {
+	background-color: #0e0c1a !important;
+	color: #e8e6f5 !important;
+	border-color: #18162c !important;
+}
+
+.dark .calendar-header select:focus,
+.dark .month-select:focus,
+.dark .year-select:focus {
+	background-color: #18162c !important;
+	border-color: #6742cf !important;
+}
+
+.dark .weekday {
+	color: #94a3b8 !important;
+}
+
+.dark .date-cell.other-month {
+	color: #3e3a52 !important;
+}
+
+.dark .date-cell.today {
+	border-color: #6742cf !important;
+	color: #a089e8 !important;
+}
+
+/* Checkboxes and Radios */
+.dark .custom-checkbox .checkbox-box,
+.dark .radio-option .radio-indicator {
+	background-color: #18162c !important;
+	border-color: #2d2a42 !important;
+}
+
+.dark .custom-checkbox input:checked + .checkbox-box,
+.dark .radio-option input:checked + .radio-indicator {
+	background-color: #6742cf !important;
+	border-color: #6742cf !important;
+}
+
+.dark .custom-checkbox .checkbox-label,
+.dark .radio-option .radio-label,
+.dark .radio-option .radio-content,
+.dark .checkbox-option .checkbox-label,
+.dark .checkbox-option .checkbox-content {
+	color: #e8e6f5 !important;
+}
+
+.dark .custom-checkbox .checkbox-description,
+.dark .radio-option .radio-description {
+	color: #94a3b8 !important;
+}
+
+/* Fix radio/checkbox option background on hover/selection in dark mode */
+.dark .radio-option,
+.dark .checkbox-option {
+	background-color: transparent !important;
+}
+
+.dark .radio-option:hover:not(.is-disabled),
+.dark .radio-option.is-checked,
+.dark .checkbox-option:hover:not(.is-disabled) {
+	background-color: #18162c !important;
+}
+
+/* Quick Actions, Toolbar Buttons, Clear Buttons */
+.dark .quick-actions,
+.dark .datetime-actions {
+	border-top-color: #18162c !important;
+	background-color: #0e0c1a !important;
+}
+
+.dark .quick-btn,
+.dark .datetime-action-btn,
+.dark .btn-clear,
+.dark .btn-select-all,
+.dark .toolbar-btn,
+.dark .toolbar button {
+	background-color: #18162c !important;
+	border-color: #2d2a42 !important;
+	color: #a089e8 !important;
+}
+
+.dark .quick-btn:hover,
+.dark .datetime-action-btn:hover,
+.dark .btn-clear:hover,
+.dark .btn-select-all:hover,
+.dark .toolbar-btn:hover,
+.dark .toolbar button:hover {
+	background-color: #2d2a42 !important;
+	border-color: #3e3a52 !important;
+	color: #c4b4ff !important;
+}
+
+/* File Upload Field */
+.dark .file-upload-area {
+	background-color: #0e0c1a !important;
+	border-color: #18162c !important;
+}
+
+.dark .file-upload-area.is-dragging {
+	background-color: #18162c !important;
+	border-color: #6742cf !important;
+}
+
+.dark .upload-text,
+.dark .upload-hint,
+.dark .file-name {
+	color: #e8e6f5 !important;
+}
+
+.dark .file-size {
+	color: #94a3b8 !important;
+}
+
+/* Select option background */
+.dark select option {
+	background-color: #0e0c1a;
+	color: #e8e6f5;
+}

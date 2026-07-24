@@ -1,0 +1,12 @@
+/* TMS Common Styles - Import all common CSS modules */
+
+@import './variables.css';
+@import './responsive.css';
+@import './buttons.css';
+@import './cards.css';
+@import './forms.css';
+@import './badges.css';
+@import './tables.css';
+@import './modals.css';
+@import './utilities.css';
+@import './dark-mode-fields.css';

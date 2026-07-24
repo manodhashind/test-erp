@@ -2,42 +2,46 @@
   <Login v-if="!currentUser" @logged-in="onLoggedIn" />
 
   <div v-else class="app-shell">
-    <aside class="sidebar">
-      <span class="brand">Site Register</span>
-      <span class="brand-sub">Construction Mgmt</span>
-
-      <button
-        v-if="isAdmin"
-        class="nav-item"
-        :class="{ active: activeTab === 'create' }"
-        @click="switchTab('create')"
-      >
-        + New User
-      </button>
-      <button class="nav-item" :class="{ active: activeTab === 'view' }" @click="switchTab('view')">
-        All Users
-      </button>
-
-      <div style="margin-top:auto;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);font-size:12px;color:#9AA3B5">
-        {{ currentUser }}
-        <span v-if="isAdmin" style="color:var(--amber)"> · Admin</span>
-        <button class="btn-danger-text" style="display:block;margin-top:6px;padding:0" @click="logout">Sign out</button>
-      </div>
-    </aside>
+    <Sidebar
+      v-model="activeTab"
+      :current-user="currentUser"
+      :is-admin="isAdmin"
+      @logout="logout"
+    />
 
     <main class="main">
       <transition name="fade" mode="out-in">
         <div v-if="editingUser && isAdmin" key="edit">
-          <h1 class="page-title">Edit User</h1>
+          <h1 class="page-title">Edit user</h1>
           <EditUser :user="editingUser" @cancel="editingUser = null" @updated="onUpdated" />
         </div>
         <div v-else-if="activeTab === 'create' && isAdmin" key="create">
-          <h1 class="page-title">New User</h1>
+          <h1 class="page-title">New user</h1>
           <CreateUser />
         </div>
-        <div v-else key="view">
-          <h1 class="page-title">All Users</h1>
+        <div v-else-if="activeTab === 'view'" key="view">
+          <h1 class="page-title">All users</h1>
           <ViewUsers :is-admin="isAdmin" @edit="startEdit" />
+        </div>
+        <div v-else-if="activeTab === 'dashboard'" key="dashboard">
+          <h1 class="page-title">Dashboard</h1>
+          <Dashboard />
+        </div>
+        <div v-else-if="activeTab === 'projects'" key="projects">
+          <h1 class="page-title">Projects</h1>
+          <Projects />
+        </div>
+        <div v-else-if="activeTab === 'sites'" key="sites">
+          <h1 class="page-title">Sites</h1>
+          <Sites />
+        </div>
+        <div v-else-if="activeTab === 'workers'" key="workers">
+          <h1 class="page-title">Workers</h1>
+          <Workers />
+        </div>
+        <div v-else-if="activeTab === 'materials'" key="materials">
+          <h1 class="page-title">Materials</h1>
+          <Materials />
         </div>
       </transition>
     </main>
@@ -47,19 +51,23 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import Login from './components/Login.vue'
+import Sidebar from './components/Sidebar.vue'
 import CreateUser from './components/CreateUser.vue'
 import ViewUsers from './components/ViewUsers.vue'
 import EditUser from './components/EditUser.vue'
+import Dashboard from './components/pages/Dashboard.vue'
+import Projects from './components/pages/Projects.vue'
+import Sites from './components/pages/Sites.vue'
+import Workers from './components/pages/Workers.vue'
+import Materials from './components/pages/Materials.vue'
 
 const currentUser = ref(null)
 const isAdmin = ref(false)
-const activeTab = ref('view')
+const activeTab = ref('dashboard')
 const editingUser = ref(null)
 
 async function fetchUserInfo() {
-  const res = await fetch('/api/method/construction_management.api.get_current_user_info', {
-    credentials: 'include',
-  })
+  const res = await fetch('/api/method/construction_management.api.get_current_user_info', { credentials: 'include' })
   const data = await res.json()
   currentUser.value = data.message.user
   isAdmin.value = data.message.is_admin
@@ -69,25 +77,16 @@ onMounted(async () => {
   try {
     const res = await fetch('/api/method/frappe.auth.get_logged_user', { credentials: 'include' })
     const data = await res.json()
-    if (data.message && data.message !== 'Guest') {
-      await fetchUserInfo()
-    }
-  } catch (e) {
-    // not logged in
-  }
+    if (data.message && data.message !== 'Guest') await fetchUserInfo()
+  } catch (e) {}
 })
 
-async function onLoggedIn() {
-  await fetchUserInfo()
-}
-
+async function onLoggedIn() { await fetchUserInfo() }
 async function logout() {
   await fetch('/api/method/logout', { method: 'POST', credentials: 'include' })
   currentUser.value = null
   isAdmin.value = false
 }
-
-function switchTab(tab) { editingUser.value = null; activeTab.value = tab }
 function startEdit(user) { editingUser.value = user }
 function onUpdated() { editingUser.value = null }
 </script>
