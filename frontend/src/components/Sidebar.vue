@@ -73,6 +73,7 @@ const opsItems = [
   { key: 'materials', label: 'Materials', icon: '▧' },
 ]
 const adminItems = [
+  { key: 'admin-settings', label: 'Admin settings', icon: '⚙', adminOnly: true },
   { key: 'create', label: 'New user', icon: '＋', adminOnly: true },
   { key: 'view', label: 'All users', icon: '☰', adminOnly: false },
 ]

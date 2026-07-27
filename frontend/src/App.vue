@@ -15,6 +15,10 @@
           <h1 class="page-title">Edit user</h1>
           <EditUser :user="editingUser" @cancel="editingUser = null" @updated="onUpdated" />
         </div>
+        <div v-else-if="activeTab === 'admin-settings' && isAdmin" key="admin-settings">
+          <h1 class="page-title">Admin settings</h1>
+          <AdminSettings />
+        </div>
         <div v-else-if="activeTab === 'create' && isAdmin" key="create">
           <h1 class="page-title">New user</h1>
           <CreateUser />
@@ -60,6 +64,7 @@ import Projects from './components/pages/Projects.vue'
 import Sites from './components/pages/Sites.vue'
 import Workers from './components/pages/Workers.vue'
 import Materials from './components/pages/Materials.vue'
+import AdminSettings from './components/pages/AdminSettings.vue'
 
 const currentUser = ref(null)
 const isAdmin = ref(false)
