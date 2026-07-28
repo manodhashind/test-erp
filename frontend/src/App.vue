@@ -1,6 +1,5 @@
 <template>
   <Login v-if="!currentUser" @logged-in="onLoggedIn" />
-
   <div v-else class="app-shell">
     <Sidebar
       v-model="activeTab"
@@ -47,7 +46,12 @@
           <h1 class="page-title">Materials</h1>
           <Materials />
         </div>
+        <div v-else-if="activeTab === 'bulk-import' && isAdmin" key="bulk-import">
+          <h1 class="page-title">Bulk import</h1>
+          <BulkImportUsers />
+        </div>
       </transition>
+      <ChatWidget v-if="isAdmin" />
     </main>
   </div>
 </template>
@@ -65,6 +69,8 @@ import Sites from './components/pages/Sites.vue'
 import Workers from './components/pages/Workers.vue'
 import Materials from './components/pages/Materials.vue'
 import AdminSettings from './components/pages/AdminSettings.vue'
+import BulkImportUsers from './components/BulkImportUsers.vue'
+import ChatWidget from './components/chat/ChatWidget.vue'
 
 const currentUser = ref(null)
 const isAdmin = ref(false)

@@ -76,6 +76,7 @@ const adminItems = [
   { key: 'admin-settings', label: 'Admin settings', icon: '⚙', adminOnly: true },
   { key: 'create', label: 'New user', icon: '＋', adminOnly: true },
   { key: 'view', label: 'All users', icon: '☰', adminOnly: false },
+  { key: 'bulk-import', label: 'Bulk import', icon: '⇪', adminOnly: true },
 ]
 
 const visibleAdminItems = computed(() =>

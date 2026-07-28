@@ -1,21 +1,34 @@
 <template>
   <div class="login-screen">
+    <div class="login-bg"></div>
+    <div class="login-orb login-orb-1"></div>
+    <div class="login-orb login-orb-2"></div>
+
     <div class="login-panel">
+      <div class="login-mark">🏗</div>
       <span class="brand-sub" style="color:var(--amber)">Construction Management</span>
-      <h1 style="margin:6px 0 24px">Site Register</h1>
+      <h1 style="margin:6px 0 28px">Site Register</h1>
+
       <form @submit.prevent="submitLogin">
-        <div class="field">
+        <div class="field login-field" style="animation-delay:0.05s">
           <label>Email</label>
-          <input v-model="usr" type="data" required autofocus />
+          <input v-model="usr" type="text" required autofocus />
         </div>
-        <div class="field">
+        <div class="field login-field" style="animation-delay:0.12s">
           <label>Password</label>
           <input v-model="pwd" type="password" required />
         </div>
-        <button type="submit" class="btn btn-primary" style="width:100%" :disabled="loading">
-          {{ loading ? 'Signing in…' : 'Sign In' }}
+        <button
+          type="submit"
+          class="btn btn-primary login-submit"
+          style="width:100%; animation-delay:0.2s"
+          :disabled="loading"
+        >
+          <span v-if="!loading">Sign in</span>
+          <span v-else class="login-spinner"></span>
         </button>
       </form>
+
       <p v-if="error" class="toast toast-error">{{ error }}</p>
     </div>
   </div>
