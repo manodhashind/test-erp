@@ -19,7 +19,7 @@ export function useChat() {
     pushMessage('user', text)
     loading.value = true
     try {
-      const res = await fetch('/api/method/construction_management.api.process_chat_message', {
+      const res = await fetch('/api/method/construction_management.llm_chat.process_chat_message_llm', {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },

@@ -25,7 +25,11 @@ def create_user_with_password(email, first_name, last_name=None, password="Const
     user.last_name = last_name
     user.send_welcome_email = 0
     user.new_password = password
-    user.insert(ignore_permissions=True)
+    frappe.flags.in_import = True
+    try:
+        user.insert(ignore_permissions=True)
+    finally:
+        frappe.flags.in_import = False
 
     return {"email": email, "password": password}
 
